@@ -1,2 +1,3 @@
 streamlit
 gpt-index
+gpt_index
