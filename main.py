@@ -10,10 +10,10 @@ import streamlit.components.v1 as components
 
 st.secrets.load_if_toml_exists()
 openai.api_key = st.secrets["openai_api_key"]
-openai.organization = st.secrets["openai_organization"]
+# openai.organization = st.secrets["openai_organization"]
 assert openai.api_key is not None, "OpenAI API key not found"
 os.environ["OPENAI_API_KEY"] = openai.api_key
-os.environ["OPENAI_ORGANIZATION"] = openai.organization
+# os.environ["OPENAI_ORGANIZATION"] = openai.organization
 AI_CLONE = "Jiddu Krishnamurti"
 
 st.title(f"{AI_CLONE}'s clone")
