@@ -1,3 +1,3 @@
 streamlit
-gpt_index
+gpt-index==0.5.27
 llama-index==0.6.0a6
