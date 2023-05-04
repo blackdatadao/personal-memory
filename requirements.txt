@@ -1,2 +1,2 @@
 streamlit
-llama-index==0.6.0a6
+llama_index
