@@ -5,7 +5,7 @@ from langchain.llms import OpenAI
 llm = OpenAI(model_name="text-davinci-003")
 
 from langchain.document_loaders import TextLoader
-from llama_index import QuestionAnswerPrompt, GPTVectorStoreIndex, SimpleDirectoryReader,GPTTreeIndex,
+from llama_index import QuestionAnswerPrompt, GPTVectorStoreIndex, SimpleDirectoryReader,GPTTreeIndex
 from llama_index import StorageContext, load_index_from_storage
 
 import streamlit as st
