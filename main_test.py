@@ -2,7 +2,6 @@
 # #.\env\Scripts\activate
 
 from langchain.llms import OpenAI
-llm = OpenAI(model_name="text-davinci-003")
 
 from langchain.document_loaders import TextLoader
 from llama_index import QuestionAnswerPrompt, GPTVectorStoreIndex, SimpleDirectoryReader,GPTTreeIndex
