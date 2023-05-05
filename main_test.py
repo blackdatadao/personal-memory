@@ -29,7 +29,7 @@ def qury_from_storage_index(question):
     # query_engine = index.as_query_engine(text_qa_template=QA_PROMPT)
     query_engine = index.as_query_engine()
 
-    response = query_engine.query(question)
+    response = query_engine.query(question).response
     return response 
 
 
@@ -41,7 +41,7 @@ def query_txt_llama():
     index = GPTVectorStoreIndex.from_documents(documents)
     index.storage_context.persist('storage2')
     query_engine = index.as_query_engine()
-    response = query_engine.query("冀田在万家基金的工作是?")
+    response = query_engine.query("冀田在万家基金的工作是?").response
     print(response)  
 c=1
 st.secrets.load_if_toml_exists()
