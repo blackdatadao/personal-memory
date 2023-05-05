@@ -8,7 +8,6 @@ from llama_index import QuestionAnswerPrompt, GPTVectorStoreIndex, SimpleDirecto
 from llama_index import StorageContext, load_index_from_storage
 
 import streamlit as st
-from gpt_index import GPTSimpleVectorIndex
 import openai
 import os
 import streamlit.components.v1 as components
