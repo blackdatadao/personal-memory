@@ -14,9 +14,7 @@ import streamlit.components.v1 as components
 
 
 def qury_from_storage_index(question):
-    storage_context = StorageContext.from_defaults(persist_dir="./storage")
     
-    index = load_index_from_storage(storage_context)
     QA_PROMPT_TMPL = (
     "We have provided context information below，this include one resume of 冀田\n"
     "---------------------\n"
@@ -33,17 +31,6 @@ def qury_from_storage_index(question):
     return response 
 
 
-def query_txt_llama():
-    
-    # loader = TextLoader('example_data/a.txt',encoding='utf-8')
-    documents = SimpleDirectoryReader('data').load_data()
-    # documents = loader.load()
-    index = GPTVectorStoreIndex.from_documents(documents)
-    index.storage_context.persist('storage2')
-    query_engine = index.as_query_engine()
-    response = query_engine.query("冀田在万家基金的工作是?").response
-    print(response)  
-c=1
 st.secrets.load_if_toml_exists()
 openai.api_key = st.secrets["openai_api_key"]
 # openai.organization = st.secrets["openai_organization"]
@@ -54,6 +41,8 @@ os.environ["OPENAI_API_KEY"] = openai.api_key
 AI_CLONE = "甄科学"
 st.title(f"{AI_CLONE}'s clone")
 
+storage_context = StorageContext.from_defaults(persist_dir="./storage1")
+index = load_index_from_storage(storage_context)
 history = []
 
 def chat(user_input: str) -> str:
