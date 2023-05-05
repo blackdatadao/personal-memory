@@ -59,7 +59,7 @@ history = []
 def chat(user_input: str) -> str:
     # only take last 3 messages (in practice, we should ensure it doesn't exceed the max length of the prompt)
     history_prefix = "\n---\n".join(history[-3:])
-    response = query_txt_llama(f"{history_prefix}\n---\nHuman: {user_input}\n{AI_CLONE}:")
+    response = qury_from_storage_index(f"{history_prefix}\n---\nHuman: {user_input}\n{AI_CLONE}:")
     history.append(f"Human: {user_input}\n{AI_CLONE}: {response}")
     return response
 
