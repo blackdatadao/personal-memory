@@ -41,7 +41,7 @@ os.environ["OPENAI_API_KEY"] = openai.api_key
 AI_CLONE = "甄科学"
 st.title(f"{AI_CLONE}'s clone")
 
-storage_context = StorageContext.from_defaults(persist_dir="./storage1")
+storage_context = StorageContext.from_defaults(persist_dir="./storage2")
 index = load_index_from_storage(storage_context)
 history = []
 
