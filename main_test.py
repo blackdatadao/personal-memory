@@ -16,16 +16,16 @@ import streamlit.components.v1 as components
 def qury_from_storage_index(question):
     
     QA_PROMPT_TMPL = (
-    "We have provided context information below，this include one resume of 冀田\n"
+    "We have provided context information below\n"
     "---------------------\n"
     "{context_str}"
     "\n---------------------\n"
-    "Given this information, please answer the question: {query_str},answer should be in Chinese beginning with 答案是.\n"
+    "Given this information, please answer the question: {query_str},answer should be in Chinese beginning with 甄科学认为.\n"
     )
     QA_PROMPT = QuestionAnswerPrompt(QA_PROMPT_TMPL)
 
-    # query_engine = index.as_query_engine(text_qa_template=QA_PROMPT)
-    query_engine = index.as_query_engine()
+    query_engine = index.as_query_engine(text_qa_template=QA_PROMPT)
+#     query_engine = index.as_query_engine()
 
     response = query_engine.query(question).response
     return response 
