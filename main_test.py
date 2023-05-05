@@ -20,7 +20,7 @@ def qury_from_storage_index(question):
     "---------------------\n"
     "{context_str}"
     "\n---------------------\n"
-    "Given this information, please answer the question: {query_str},answer should be in Chinese beginning with 甄科学认为.\n"
+    "Given this information, please answer the question: {query_str}. If no relevant information found in the given context information, please answer I don't know. Answer should be in Chinese beginning with 甄科学认为.\n"
     )
     QA_PROMPT = QuestionAnswerPrompt(QA_PROMPT_TMPL)
 
