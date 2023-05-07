@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 # #.\env\Scripts\activate
 
-from langchain.llms import OpenAI
 
-from langchain.document_loaders import TextLoader
-from llama_index import QuestionAnswerPrompt, GPTVectorStoreIndex, SimpleDirectoryReader,GPTTreeIndex
-from llama_index import StorageContext, load_index_from_storage
+import pandas as pd
+
 
 import streamlit as st
 import openai
@@ -243,22 +241,6 @@ def add_txt_to_embedding(txt_path,csv_path,save_path):
     return df
 
 
-def qury_from_storage_index(question):
-    
-    QA_PROMPT_TMPL = (
-    "We have provided context information below\n"
-    "---------------------\n"
-    "{context_str}"
-    "\n---------------------\n"
-    "Given this information, please answer the question: {query_str}. If no relevant information found in the given context information, please answer I don't know. Answer should be in Chinese beginning with 甄科学认为.\n"
-    )
-    QA_PROMPT = QuestionAnswerPrompt(QA_PROMPT_TMPL)
-
-    query_engine = index.as_query_engine(text_qa_template=QA_PROMPT)
-#     query_engine = index.as_query_engine()
-
-    response = query_engine.query(question).response
-    return response 
 
 
 st.secrets.load_if_toml_exists()
@@ -320,7 +302,9 @@ doc.addEventListener('keydown', function(e) {
 # something a nontech person understand
 st.markdown(
     """
-    **⚠️ Note:** The AI remembers only the past 3 messages. If you want to start a new conversation, refresh the page.
+    **⚠️ Note:** AI仅记忆最近的三句话。 
+    你可以和大刘聊科幻、聊他的经历和思想，也可以问他关于三体的问题。
+    关于三体小说的详细内容仅包含前10章。
     """
 )
 
