@@ -240,6 +240,16 @@ def add_txt_to_embedding(txt_path,csv_path,save_path):
     df.to_csv(save_path,index=False)
     return df
 
+def add_record_to_json(json_path,question,answer):
+    record={"ask":question,"answer":answer}
+    with open(json_path,'r',encoding='utf-8') as f:
+        data=json.load(f)
+    data.append(record)
+    with open(json_path,'w',encoding='utf-8') as f:
+        json.dump(data,f,ensure_ascii=False,indent=4)
+    return data
+
+
 
 
 
@@ -263,6 +273,7 @@ def chat(user_input: str) -> str:
     history_prefix = "\n---\n".join(history[-3:])
     response = ask(f"{history_prefix}\n---\n你: {user_input}\n{AI_CLONE}:",df)
     history.append(f"你: {user_input}\n{AI_CLONE}: {response}")
+   
     return response
 
 # input box
@@ -273,6 +284,7 @@ if st.button("Send"):
     st.write("You: " + user_input)
     # display clone response
     response = chat(user_input)
+    add_record_to_json('example_data/chat_record_timothy.json',user_input,response)
     st.write(f"{AI_CLONE}: " + response)
 
 components.html(
