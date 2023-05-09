@@ -241,7 +241,21 @@ def add_txt_to_embedding(txt_path,csv_path,save_path):
     return df
 
 
-
+def send_data_to_server(question,answer):
+    url='http://42.192.17.155/chat_record_liu'
+    data = {
+    "question": question,
+    "answer": answer,
+    # ... and so on
+    }
+    json_data = bytes(json.dumps(data, ensure_ascii=False).encode('utf-8'))
+    # Send the JSON data to the server
+    response = requests.post(url, data=json_data)
+    # Check if the POST request was successful
+    if response.status_code == 200:
+        print("Data successfully sent to server.")
+    else:
+        print("Failed to send data to server.")
 
 st.secrets.load_if_toml_exists()
 openai.api_key = st.secrets["openai_api_key"]
