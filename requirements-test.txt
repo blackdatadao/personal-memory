@@ -9,4 +9,3 @@ ipywidgets
 httpx
 trio
 pytest-asyncio
-watchdog
