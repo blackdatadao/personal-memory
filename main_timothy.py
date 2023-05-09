@@ -249,7 +249,21 @@ def add_record_to_json(json_path,question,answer):
         json.dump(data,f,ensure_ascii=False,indent=4)
     return data
 
-
+def send_data_to_server(question,answer):
+    url='http://42.192.17.155/chat_record'
+    data = {
+    "question": question,
+    "answer": answer,
+    # ... and so on
+    }
+    json_data = bytes(json.dumps(data, ensure_ascii=False).encode('utf-8'))
+    # Send the JSON data to the server
+    response = requests.post(url, data=json_data)
+    # Check if the POST request was successful
+    if response.status_code == 200:
+        print("Data successfully sent to server.")
+    else:
+        print("Failed to send data to server.")
 
 
 
@@ -284,7 +298,7 @@ if st.button("Send"):
     st.write("You: " + user_input)
     # display clone response
     response = chat(user_input)
-    add_record_to_json('example_data/chat_record_timothy.json',user_input,response)
+    send_data_to_server(user_input,response)
     st.write(f"{AI_CLONE}: " + response)
 
 components.html(
