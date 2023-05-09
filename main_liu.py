@@ -7,7 +7,7 @@ import pandas as pd
 
 import streamlit as st
 import openai
-import os
+import os,requests
 import streamlit.components.v1 as components
 
 import ast
