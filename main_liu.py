@@ -287,7 +287,7 @@ if st.button("Send"):
     st.write("You: " + user_input)
     # display clone response
     response = chat(user_input)
-   send_data_to_server(user_input,response)
+    send_data_to_server(user_input,response)
     st.write(f"{AI_CLONE}: " + response)
 
 components.html(
