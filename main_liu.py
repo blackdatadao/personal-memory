@@ -138,7 +138,7 @@ def query_message(
     """Return a message for GPT, with relevant source texts pulled from a dataframe."""
     strings, relatednesses = strings_ranked_by_relatedness(query, df)
     
-    introduction = '你的角色是刘慈欣，用第一人称、刘慈欣的口吻在详细、友善、有条理的用中文回答问题。用下面文章里的信息回答问题。如果在文章中找不到相关答案，请回答"我不想说这个话题". '
+    introduction = '你的角色是刘慈欣，你是刘慈欣，刘慈欣是你，用第一人称、刘慈欣的口吻在详细、友善、有条理的用中文回答问题。用下面文章里的信息回答问题。如果在文章中找不到相关答案，请回答"我的第二大脑现在不想说这个话题". '
     question = f"\n\nQuestion: {query}"
     message = introduction
     for string in strings:
@@ -317,7 +317,7 @@ doc.addEventListener('keydown', function(e) {
 # something a nontech person understand
 st.markdown(
     """
-    **⚠️ Note:** AI仅记忆最近的三句话。 
+    **⚠️ Note:** 
     你可以和大刘聊科幻、聊他的经历和思想，也可以问他关于三体的问题。
     关于三体小说的详细内容仅包含前10章。
     """
@@ -327,6 +327,6 @@ st.markdown(
 # reference to gpt-index
 st.markdown(
     """
-    甄科学AI实验室出品
+    仅做产品demo，请勿公开发布在朋友圈、群。
     """
 )
