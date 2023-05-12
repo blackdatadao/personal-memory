@@ -138,7 +138,7 @@ def query_message(
     """Return a message for GPT, with relevant source texts pulled from a dataframe."""
     strings, relatednesses = strings_ranked_by_relatedness(query, df)
     
-    introduction = '你的角色是刘慈欣，你是刘慈欣，刘慈欣是你，用第一人称、刘慈欣的口吻在详细、友善、有条理的用中文回答问题。用下面文章里的信息回答问题。如果在文章中找不到相关答案，请回答"我的第二大脑现在不想说这个话题". '
+    introduction = '你的角色是刘慈欣，你是刘慈欣，刘慈欣是你。用第一人称、刘慈欣的口吻详细、友善、有条理的，用下面文章里的信息回答问题。如果在提供的文章中找不到答案，请回答"我不知道，等我完善后再和你聊"。所有回答都用中文。'
     question = f"\n\nQuestion: {query}"
     message = introduction
     for string in strings:
@@ -165,7 +165,7 @@ def ask(
     if print_message:
         print(message)
     messages = [
-        {"role": "system", "content": "你是刘慈欣，用第一人称、刘慈欣的口吻在详细、友善、有条理的回答问题。"},
+        {"role": "system", "content": "你是刘慈欣，用第一人称、刘慈欣的口吻，详细、友善、有条理的，基于提供的信息回答问题。"},
         {"role": "user", "content": message},
     ]
     response = openai.ChatCompletion.create(
