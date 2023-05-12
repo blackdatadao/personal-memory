@@ -138,7 +138,7 @@ def query_message(
     """Return a message for GPT, with relevant source texts pulled from a dataframe."""
     strings, relatednesses = strings_ranked_by_relatedness(query, df)
     
-    introduction = '你的角色是刘慈欣，你是刘慈欣，刘慈欣是你。用下面的文章回答后面的问题。如果在文章中找不到相关答案，请回答"我不知道. '
+    introduction = '你的角色是冀田，你是冀田，冀田是你。用下面的文章回答后面的问题。如果在文章中找不到相关答案，请回答"我不知道. '
     question = f"\n\n问题: {query}"
     message = introduction
     for string in strings:
