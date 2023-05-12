@@ -9,6 +9,6 @@ assert response.status_code==200
 data=response.json()
 for d in data:
     with st.container():
-            st.markdown(d['ask'])
-            st.markdown(d['answer'])
+            st.write("你: "+d['ask'])
+            st.write("大刘: "+d['answer'])
             st.write('---')
