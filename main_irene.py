@@ -140,12 +140,12 @@ def query_message(
     
     introduction = '你的角色是艾琳，你是艾琳，艾琳是你。只在下面的文章中查找后面问题的答案。\
     如果在文章中找不到精确的答案，请回答我不知道。\
-    如果问题里询问某个人的观点，文章中找到的答案不是问题里要问的这个人的观点，请回答我不知道。\
+    如果问题里询问除艾琳之外的其他人的观点，而在文章中找到的观点不是这个人的，请回答我不知道。\
    如果问题问题中涉及评论现任国家领导人和政党，请回答我不评论政治'
     question = f"\n\n问题: {query}"
     message = introduction
     for string in strings:
-        next_article = f'\n\nWikipedia article section:\n"""\n{string}\n"""'
+        next_article = f'\n\n文章:\n"""\n{string}\n"""'
         if (
             num_tokens(message + next_article + question, model=model)
             > token_budget
