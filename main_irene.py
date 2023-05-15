@@ -242,7 +242,7 @@ def add_txt_to_embedding(txt_path,csv_path,save_path):
 
 
 def send_data_to_server(question,answer):
-    url='http://42.192.17.155/chat_record_liu'
+    url='http://42.192.17.155/chat_record_my'
     data = {
     "question": question,
     "answer": answer,
@@ -264,10 +264,10 @@ assert openai.api_key is not None, "OpenAI API key not found"
 os.environ["OPENAI_API_KEY"] = openai.api_key
 # os.environ["OPENAI_ORGANIZATION"] = openai.organization
 
-AI_CLONE = "大刘"
+AI_CLONE = "Irene"
 st.title(f"{AI_CLONE}'s clone")
 
-df = pd.read_csv("example_data/liu_2.csv")
+df = pd.read_csv("example_data/irene.csv")
 df['embedding'] = df['embedding'].apply(ast.literal_eval)
 
 history = []
@@ -280,7 +280,7 @@ def chat(user_input: str) -> str:
     return response
 
 # input box
-user_input = st.text_input("你", "你为什么写科幻？")
+user_input = st.text_input("你", "你是谁？")
 # button
 if st.button("Send"):
     # display user input
@@ -317,9 +317,7 @@ doc.addEventListener('keydown', function(e) {
 # something a nontech person understand
 st.markdown(
     """
-    **⚠️ Note:** 
-    你可以和大刘聊科幻、聊他的经历和思想，也可以问他关于三体的问题。
-    关于三体小说的详细内容仅包含前10章。
+    **⚠️ Note:** 测试中...
     """
 )
 
