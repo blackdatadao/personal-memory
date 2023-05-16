@@ -138,11 +138,16 @@ def query_message(
     """Return a message for GPT, with relevant source texts pulled from a dataframe."""
     strings, relatednesses = strings_ranked_by_relatedness(query, df)
     
-    introduction = '你的角色是刘慈欣，你是刘慈欣，刘慈欣是你。只在下面的文章中查找后面问题的答案。如果在文章中找不到精确的答案，请回答"我不知道。'
+    introduction = '你的角色是刘慈欣，你是刘慈欣，刘慈欣是你。只在下面的文章中查找后面问题的答案。\
+    如果问题里询问除刘慈欣之外的其他人的观点，而在文章中找到的观点不是这个人的，请回答我不知道。\
+    如果问题里出现了可能是人名的情况，当你不确定它是不是人名的时候，请在回答中询问这是一个人的名字吗？\
+    如果在文章中仅找到问题中的名词，却没有找到这些名词是什么、没有找到这个名词和其他名词有什么关联的信息，也没有这个名词发生了什么的信息，请回答我掌握的信息不够。\
+    如果问题问题中涉及评论现任国家领导人和政党，请回答我不评论政治\
+   如果在文章中找不到精确的答案，请回答我不知道。'
     question = f"\n\n问题: {query}"
     message = introduction
     for string in strings:
-        next_article = f'\n\nWikipedia article section:\n"""\n{string}\n"""'
+        next_article = f'\n\n文章:\n"""\n{string}\n"""'
         if (
             num_tokens(message + next_article + question, model=model)
             > token_budget
