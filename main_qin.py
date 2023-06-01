@@ -17,6 +17,7 @@ import tiktoken
 
 EMBEDDING_MODEL = "text-embedding-ada-002"
 GPT_MODEL = "gpt-3.5-turbo"
+GPT_MODEL = "text-babbage-001"
 MAX_TOKENS = 1600
 AI_CLONE = "QIN"
 name="秦朔"
